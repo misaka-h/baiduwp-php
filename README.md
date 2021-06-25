@@ -2,10 +2,10 @@
 PanDownload 网页复刻版，PHP 语言版<br/>
 本项目仅供大家学习参考，严禁商业用途
 
-# 😱Warning
-由于百度修改分享页面代码，导致项目失效。<br/>
-正尝试修复，可Clone最新dev分支体验，详细信息参见[#93](https://github.com/yuantuo666/baiduwp-php/issues/93)<br/>
-目前已经修复文件目录获取、支持 50MB 以下文件下载。
+由于百度网盘修改分享页面JavaScript代码，导致所有旧版本失效，请更新至 `2.1.4` 或更新版本体验本项目。<br/>
+详细信息参见[#93](https://github.com/yuantuo666/baiduwp-php/issues/93)
+
+<div align="center"><a href="https://www.bilibili.com/video/BV1N5411A77n"><img src="https://i.loli.net/2021/04/04/9NJ2lC4T78o1XmZ.png" width="500"><br /><b>点此查看本项目安装、配置、使用视频教程</b></a></div>
 
 ## 🔎实现原理
 通过curl获取网盘文件信息，处理后显示在网页中。通过api接口以及SVIP账号的Cookie(BDUSS)获取高速下载链接。<br/>
@@ -15,34 +15,22 @@ PanDownload 网页复刻版，PHP 语言版<br/>
 
 📢欢迎各位转发本项目到各大论坛，但请一定要标注原地址！
 
-![speed.gif](https://i.loli.net/2020/10/01/2mEqkClnPev8ORd.gif)
-
-## 💴Donate
-![捐赠](https://imwcr.cn/resources/img/donate.jpg)
-[捐赠作者](https://imwcr.cn/?donate)
+![speed.gif](https://i.loli.net/2021/04/04/pRD1hA8rKLeEbn9.gif)
 
 ## 💻Demo
 [暂不开放](http://imwcr.cn/api/bdwp/)<br />
 因站长学习紧张加上精力有限，演示站没有时间维护，故暂时关闭。
 
 ## 🚧Blacklists
-- https://pan.xiaoshuyun.cn/ 1.4.3版本 无密码
-- https://pan.qiafan.vip/ 1.4.5版本 无密码
 - http://www.dupan.cc/ （恶意篡改后台并加密，站长QQ33703259）
-<!-- - https://bd.fmvp.cc/ 1.4.5版本 无密码 -->
 
 - http://www.pojiewo.com/baidujx 1.4.2版本  注：此网站 **盗用** 其他网站的接口获取下载地址
-- https://202.61.130.143/ 1.4.2版本
-- http://59.110.124.211:9090/ 1.0版本
-- http://yunpan.aoti.xyz:81/ 1.4.2版本
-- https://pan.jwls.live/ 1.4.3版本
-- https://bd.pkqjsq.top/ 1.4.3版本
-- http://pan.0ddt.com/ 1.0版本
+<!-- - https://pan.xiaoshuyun.cn/ 1.4.3版本 无密码 -->
+<!-- - https://bd.pkqjsq.top/ 1.4.3版本 -->
+<!-- - http://pan.0ddt.com/ 1.0版本 -->
 <!-- - https://129.146.174.245/ 1.4.5版本 -->
-<!-- - http://pan.wbeu.cn/ 1.4.5版本 -->
 <!-- - https://pan.lie01.com/ 1.4.3版本 -->
 <!-- - https://www.bdwp.cf/ 1.4.3版本 -->
-<!-- - http://39.105.69.60:82/ 1.0版本 -->
 
 以上网站使用本项目源码，未与作者联系而删除作者信息。<br />
 版权信息可添加**Github项目地址**或**我个人主页地址**，内容可自定，但访客**必须可见**。<br />
@@ -66,26 +54,37 @@ PanDownload 网页复刻版，PHP 语言版<br/>
   - `Firefox 85+` [点此访问 Firefox 官网](https://www.firefox.com.cn/)
 
 # 🔧Install & Setting
+[**点此查看安装、配置、使用视频教程**](https://www.bilibili.com/video/BV1N5411A77n)
+
 首先Clone项目或进入[Releases](https://github.com/yuantuo666/baiduwp-php/releases)下载项目文件。<br />
-然后访问 `install.php` 文件并填写相关信息。<br />
+然后访问 `install.php` 文件并填写相关信息进行安装。<br />
 如果使用数据库，则需要先点击 `检查数据库连接` 连接数据库，保证账号密码正确。<br />
-最后点击提交即可。
+最后点击提交即可。<br />
+
+安装完成后可直接使用，站长可进入settings.php中进行相关设置。<br />
+在**SVIP账号**中可设置**SVIP账号**的**BDUSS**和**STOKEN**，添加账号后记得进入**会员账号切换模式**将模式改成**顺序模式**或**轮换模式**。<br />
 
 ## 📦New Changes
-- 当前版本：`2.1.3`
-- 更新日期：2021-03-14
+- 当前版本：`2.1.7`
+- 更新日期：2021-05-18
 - 修改内容：
   - 💥新增功能
-    - 兼容老方法获取randsk(BDCLND) #84
-    - aria2推送时附上文件名 #78 Thanks to @kwxiaozhu
+    - 新增 aria2 安卓端
+    - 新增解析链接失效时间设置
+    - 关于页面自动生成二维码
   - ⚠错误修复
-    - 安装页面未处理默认情况丢失前缀 #76
+    - 修复语言设置错误提示中转跳用户设置页面链接错误
+    - 修复手机端推送 aria2 因文件夹不存在出错
   - ♻代码优化
-    - 首页安装后状态提示完善 #76 #81
-    - 根页面获取失败提示完善
-    - 账号拉黑提示 #83 #84 #86
+    - 在新标签页打开 Motrix 首页
+    - ws(s)链接检测支持 IPv6
 
 [查看更多](Update.md)
+
+## 💴Donate
+<img src="https://imwcr.cn/resources/img/donate.jpg" width="400"/>
+
+[捐赠作者](https://imwcr.cn/?donate)
 
 ## 💡Contact
 - 项目作者：Yuan_Tuo
